@@ -20,7 +20,7 @@ class TestVertexAiCodeExecutor(unittest.TestCase):
     )
     self.executor = VertexAiCodeExecutor(resource_name=self.mock_resource_name)
 
-  def _create_mock_files(self, file_data: List[tuple]) -> List[File]:
+  def _create_mock_files(self, file_data: List[tuple[str, str, str]]) -> List[File]:
     """Helper to create File objects from (name, content, mime_type)."""
     return [
         File(name=name, content=content, mime_type=mime_type)
