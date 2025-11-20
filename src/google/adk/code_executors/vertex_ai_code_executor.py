@@ -117,7 +117,7 @@ class VertexAiCodeExecutor(BaseCodeExecutor):
   resource_name: Optional[str] = None
 
   # Mark as PrivateAttr so Pydantic and copy.deepcopy ignore it during validation/cloning
-  _code_interpreter_extension: Any = PrivateAttr(default=None)
+  _code_interpreter_extension: Optional["Extension"] = PrivateAttr(default=None)
 
   def __init__(
       self,
