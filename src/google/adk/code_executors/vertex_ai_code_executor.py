@@ -138,7 +138,7 @@ class VertexAiCodeExecutor(BaseCodeExecutor):
     # during deployment deepcopy. It is initialized lazily in the property below.
 
   @property
-  def extension_client(self):
+  def extension_client(self) -> "Extension":
     """Lazy loads the Vertex AI Extension client."""
     if self._code_interpreter_extension is None:
       self._code_interpreter_extension = _get_code_interpreter_extension(
