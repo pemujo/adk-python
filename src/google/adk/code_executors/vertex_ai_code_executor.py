@@ -117,7 +117,7 @@ class VertexAiCodeExecutor(BaseCodeExecutor):
   resource_name: Optional[str] = None
 
   # Mark as PrivateAttr so Pydantic and copy.deepcopy ignore it during validation/cloning
-  _code_interpreter_extension: Optional["Extension"] = PrivateAttr(default=None)
+  _code_interpreter_extension: Optional['Extension'] = PrivateAttr(default=None)
 
   def __init__(
       self,
@@ -138,7 +138,7 @@ class VertexAiCodeExecutor(BaseCodeExecutor):
     # during deployment deepcopy. It is initialized lazily in the property below.
 
   @property
-  def extension_client(self) -> "Extension":
+  def extension_client(self) -> 'Extension':
     """Lazy loads the Vertex AI Extension client."""
     if self._code_interpreter_extension is None:
       self._code_interpreter_extension = _get_code_interpreter_extension(
