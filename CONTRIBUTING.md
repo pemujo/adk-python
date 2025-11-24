@@ -186,8 +186,8 @@ part before or alongside your code PR.
 
 6.  **Auto-format the code:**
 
-    **NOTE**: We use `isort` and `pyink` for styles, make sure they are installed on the active virtual environment. Use the included
-    autoformat.sh to auto-format.
+    **NOTE**: We use `isort` and `pyink` for styles, make sure they are installed on the active virtual environment. 
+    Use the included autoformat.sh to auto-format.
 
     ```shell
     uv sync --extra dev
