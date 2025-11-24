@@ -181,15 +181,16 @@ part before or alongside your code PR.
 
     ```shell
     uv sync --extra test --extra eval --extra a2a
-    pytest ./tests/unittests
+    uv run pytest ./tests/unittests
     ```
 
 6.  **Auto-format the code:**
 
-    **NOTE**: We use `isort` and `pyink` for styles. Use the included
+    **NOTE**: We use `isort` and `pyink` for styles, make sure they are installed on the active virtual environment. Use the included
     autoformat.sh to auto-format.
 
     ```shell
+    uv sync --extra dev
     ./autoformat.sh
     ```
 
