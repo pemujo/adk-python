@@ -173,7 +173,7 @@ part before or alongside your code PR.
 5.  **Run unit tests:**
 
     ```shell
-    pytest ./tests/unittests
+    uv run pytest ./tests/unittests
     ```
 
     NOTE: for accurate repro of test failure, only include `test`, `eval` and
