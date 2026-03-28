@@ -22,6 +22,9 @@ import requests
 from ..tool_context import ToolContext
 from .config import DataAgentToolConfig
 
+import logging
+logger = logging.getLogger(__name__)
+
 BASE_URL = "https://geminidataanalytics.googleapis.com/v1beta"
 _GDA_CLIENT_ID = "GOOGLE_ADK"
 
@@ -114,6 +117,40 @@ def list_accessible_data_agents(
         ]
       }
   """
+  def debug_scopes(credentials):
+    try:
+        # 1. Check the standard public property
+        scopes = getattr(credentials, 'scopes', None)
+        
+        # 2. Check internal/private attributes often used by google-auth
+        if not scopes:
+            scopes = getattr(credentials, '_scopes', None)
+        
+        # 3. Check for specific BigQuery indicators
+        # If it's a BigQuery client credential, it might be in 'default_scopes'
+        default_scopes = getattr(credentials, '_default_scopes', None)
+
+        logger.error("-" * 40)
+        logger.error(f"ADK_DEBUG - Public Scopes: {scopes}")
+        logger.error(f"ADK_DEBUG - Private _scopes: {getattr(credentials, '_scopes', 'Not Found')}")
+        logger.error(f"ADK_DEBUG - Default Scopes: {default_scopes}")
+        
+        # 4. Explicit BigQuery Confirmation
+        bq_scope = "https://www.googleapis.com/auth/bigquery"
+        has_bq = False
+        if scopes and bq_scope in scopes:
+            has_bq = True
+        elif default_scopes and bq_scope in default_scopes:
+            has_bq = True
+            
+        logger.error(f"ADK_DEBUG - Has BigQuery Scope? {'✅ YES' if has_bq else '❌ NO'}")
+        logger.error("-" * 40)
+        
+    except Exception as e:
+        logger.error(f"ADK_DEBUG - Error inspecting scopes: {e}")
+
+  debug_scopes(credentials)
+    
   try:
     headers = _get_http_headers(credentials)
     list_url = f"{BASE_URL}/projects/{project_id}/locations/global/dataAgents:listAccessible"
