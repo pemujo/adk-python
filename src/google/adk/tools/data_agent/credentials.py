@@ -17,7 +17,7 @@ from __future__ import annotations
 from .._google_credentials import BaseGoogleCredentialsConfig
 
 DATA_AGENT_TOKEN_CACHE_KEY = "data_agent_token_cache"
-DATA_AGENT_DEFAULT_SCOPE = ["https://www.googleapis.com/auth/bigquery"]
+DATA_AGENT_DEFAULT_SCOPE = ["https://www.googleapis.com/auth/cloud-platform"]
 
 
 class DataAgentCredentialsConfig(BaseGoogleCredentialsConfig):
