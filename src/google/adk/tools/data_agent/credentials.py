@@ -16,8 +16,13 @@ from __future__ import annotations
 
 from .._google_credentials import BaseGoogleCredentialsConfig
 
+import logging
+logger = logging.getLogger(__name__)
+
 DATA_AGENT_TOKEN_CACHE_KEY = "data_agent_token_cache"
 DATA_AGENT_DEFAULT_SCOPE = ["https://www.googleapis.com/auth/cloud-platform"]
+logger.error("ADK_DEBUG: Using new default scope: %s", DATA_AGENT_DEFAULT_SCOPE)
+
 
 
 class DataAgentCredentialsConfig(BaseGoogleCredentialsConfig):
